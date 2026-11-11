@@ -1,0 +1,44 @@
+# Publie la politique de confidentialité sur GitHub Pages (même rendu qu'avant, avec vérification).
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Compiler (Jekyll, comme le mode automatique de GitHub)
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Vérifier la politique de confidentialité
+        run: |
+          test -s _site/privacy_policy.html || { echo "privacy_policy.html manquant"; exit 1; }
+          grep -q "<title>Politique de Confidentialité" _site/privacy_policy.html || { echo "Titre introuvable"; exit 1; }
+          echo "OK : privacy_policy.html présent"
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
