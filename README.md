@@ -1,11 +1,11 @@
-# Bible Louis Second
+# Sainte Bible
 
-Application Android de lecture de la Bible version Louis Segond, 
-développée par Donatien Byakombe.
+Politique de confidentialité de l'application Android **Sainte Bible**
+(Bible Louis Segond 1910), développée par Donatien Byakombe.
 
 ## Politique de Confidentialité
 
-https://1donatien0.github.io/bible-louis-second/privacy_policy.html
+https://1donatien0.github.io/sainte-bible-politique/privacy_policy.html
 
 ## Contact
 
