@@ -70,11 +70,10 @@
       margin: 0 0 12px 24px;
     }
 
-    .separator {
-      border: none;
-      border-top: 1px solid #d4a73c;
-      margin: 56px 0 8px;
-    }
+    .t-en { display: none; }
+    html.en .t-en { display: block; }
+    html.en span.t-en { display: inline; }
+    html.en .t-fr { display: none; }
 
     footer {
       text-align: center;
@@ -85,15 +84,26 @@
       background: #f2ead6;
     }
   </style>
+  <script>
+    // Une seule langue affichée : français si l'appareil est en français, anglais sinon.
+    (function () {
+      var lang = (navigator.languages && navigator.languages[0]) || navigator.language || 'fr';
+      if (!/^fr/i.test(lang)) {
+        document.documentElement.lang = 'en';
+        document.documentElement.className += ' en';
+        document.title = 'Privacy Policy – Sainte Bible';
+      }
+    })();
+  </script>
 </head>
 <body>
 <header>
   <h1>Sainte Bible</h1>
-  <p>Politique de Confidentialité · Privacy Policy</p>
-  <span class="badge">Dernière mise à jour : 14 novembre 2026 · Last updated: November 14, 2026</span>
+  <p><span class="t-fr">Politique de Confidentialité</span><span class="t-en">Privacy Policy</span></p>
+  <span class="badge"><span class="t-fr">Dernière mise à jour : 14 novembre 2026</span><span class="t-en">Last updated: November 14, 2026</span></span>
 </header>
 <main>
-<section lang="fr">
+<section class="t-fr" lang="fr">
   <p>En résumé : aucune information personnelle identifiable n'est collectée, et aucune information n'est envoyée à des serveurs tiers.</p>
   <p>Donatien Byakombe (ci-après « nous » ou « le développeur ») a développé l'application <strong>Sainte Bible</strong> en tant qu'application gratuite. Ce service est fourni sans frais et est destiné à être utilisé tel quel.</p>
   <p>Cette page a pour but d'informer les utilisateurs de nos politiques concernant la collecte, l'utilisation et la divulgation des informations personnelles pour toute personne décidant d'utiliser notre application.</p>
@@ -130,9 +140,7 @@
   <p><strong>📧 byakombe@aol.com</strong></p>
 </section>
 
-<hr class="separator">
-
-<section lang="en">
+<section class="t-en" lang="en">
   <p>In short: no personally identifiable information is collected, and no information is sent to third-party servers.</p>
   <p>Donatien Byakombe (“we” or “the developer”) built the <strong>Sainte Bible</strong> app (also shown as <strong>Holy Bible</strong>) as a free app. This service is provided at no cost and is intended for use as is.</p>
   <p>This page informs users of our policies regarding the collection, use and disclosure of personal information for anyone who decides to use our app.</p>
@@ -170,7 +178,7 @@
 </section>
 </main>
 <footer>
-  &copy; 2026 Sainte Bible – Donatien Byakombe. Tous droits réservés. · All rights reserved.
+  &copy; 2026 Sainte Bible – Donatien Byakombe. <span class="t-fr">Tous droits réservés.</span><span class="t-en">All rights reserved.</span>
 </footer>
 </body>
 </html>
