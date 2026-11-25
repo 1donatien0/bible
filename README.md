@@ -5,7 +5,7 @@ Politique de confidentialité de l'application Android **Sainte Bible**
 
 ## Politique de Confidentialité
 
-https://1donatien0.github.io/sainte-bible-politique/privacy_policy.html
+https://1donatien0.github.io/bible/privacy_policy.html
 
 ## Contact
 
